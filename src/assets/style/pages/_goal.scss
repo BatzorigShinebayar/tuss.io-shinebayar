@@ -1,0 +1,230 @@
+.goal-item {
+  padding: 15px 10px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid $gray-300;
+}
+
+.goal-item-action {
+  cursor: pointer;
+  padding: 2px 4px;
+  margin-left: 5px;
+}
+
+.goal-child-index {
+  background-color: $light;
+  padding: 15px;
+  display: flex;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.goal-child-index-remove {
+  float: right;
+  cursor: pointer;
+  padding: 2px 4px;
+
+  &:hover {
+    color: $danger;
+  }
+}
+
+.goal-sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+
+  &.reverse {
+    width: 0;
+
+    & > .goal-sidebar-toggler {
+      transform: rotate(180deg);
+      top: -84px;
+      z-index: 999999;
+    }
+
+    .goal-sidebar-header, .goal-sidebar-footer {
+      display: none;
+    }
+  }
+}
+
+.goal-sidebar-header {
+  border-bottom: 1px solid $menu-border-color;
+}
+
+.goal-sidebar-footer {
+  flex-grow: 3;
+  overflow: auto;
+}
+
+.goal-sidebar-toggler {
+  position: absolute;
+  right: -10px;
+  top: 20px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: $orange;
+
+  &:hover {
+    background-color: $orange;
+    color: $white;
+  }
+
+  svg {
+    margin-right: 2px;
+  }
+}
+
+.goal-sidebar-item {
+  display: block;
+  padding: 16px;
+  cursor: pointer;
+  border-bottom: 1px solid $menu-border-color;
+  transition: 0.1s;
+  font-size: 14px;
+
+  &:hover, &.active {
+    background-color: $light;
+    color: $primary;
+  }
+}
+
+.goal-plan-create-input {
+  max-width: 700px;
+}
+
+.goal-plan-create-date {
+  max-width: 150px;
+}
+
+.goal-radio-btn {
+  .custom-radio {
+    padding-left: 0;
+  }
+
+  .custom-control-label {
+    cursor: pointer;
+    background-color: $white;
+    padding: 7px 12px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+
+
+    &::before, &::after {
+      display: none;
+    }
+  }
+
+  .custom-control {
+    margin-right: 10px;
+  }
+
+  .custom-control-input:checked ~ .custom-control-label,
+  .custom-control-label:hover {
+    background-color: $orange;
+    color: $white;
+  }
+}
+
+.goal-plan-year {
+  min-width: 72px;
+  max-width: 100px;
+}
+
+#goal-plan-table {
+  .e-input-group-icon {
+    display: none !important;
+  }
+
+  input.e-input {
+    padding-left: 2px !important;
+  }
+}
+
+#goal-plan-list-table {
+  margin-top: 20px;
+
+  thead th {
+    padding: 5px 16px;
+    font-weight: normal;
+  }
+
+  .thdetail {
+    width: 40px;
+  }
+
+  .tddetail {
+    padding: 5px;
+  }
+
+  .threalization {
+    width: 400px;
+  }
+
+  .thpercent {
+    width: 115px;
+  }
+
+  .thstate {
+    width: 100px;
+  }
+
+  .thactions {
+    width: 100px;
+  }
+
+  tbody {
+    td {
+      border-bottom: 1px solid $gray-300;
+    }
+  }
+
+  .plan-detail-parent {
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-300;
+  }
+
+  .plan-detail {
+    display: flex;
+    align-items: center;
+    width: 683px;
+  }
+
+  .detail-realization {
+    width: 368px;
+  }
+
+  .detail-percent {
+    margin-left: 32px;
+  }
+
+  .plan-line-name {
+    margin-left: 60px;
+    font-weight: bold;
+  }
+
+  .plan-line {
+    padding-top: 10px;
+    border-top: 1px solid $gray-300;
+  }
+
+  .plan-icon {
+    cursor: pointer;
+
+    &:hover, &.not-collapsed {
+      color: $orange;
+    }
+
+    &.collapsed .col-open, &.not-collapsed .col-closed {
+      display: none;
+    }
+  }
+}
+

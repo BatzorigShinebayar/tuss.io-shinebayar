@@ -1,0 +1,1 @@
+<template>  <div class="content-header">    <div class="content-header-text">      <slot name="text" />    </div>    <div>      <slot name="image" />    </div>  </div></template><script>export default {  name: 'ContentHeader',};</script>

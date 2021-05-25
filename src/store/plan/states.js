@@ -1,0 +1,20 @@
+export default {
+  companyPlan: null,
+  task: null,
+  taskStageGroup: null,
+  taskType: null,
+  taskStageState: null,
+  taskYearId: null,
+  taskFilter: {
+    name: null,
+    start_date: null,
+    end_date: null,
+    task_type: null,
+    task_stage_state: null,
+    algorithm: null,
+    function: null,
+    department: null,
+  },
+  taskSort: 'end_date',
+  taskData: null,
+};

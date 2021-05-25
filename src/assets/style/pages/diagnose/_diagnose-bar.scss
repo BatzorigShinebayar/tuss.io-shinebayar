@@ -1,0 +1,155 @@
+#diagnose-bar {
+  max-height: 100vh;
+  overflow: hidden;
+  display: none;
+}
+
+.submenu-active #diagnose-bar {
+  width: 100%;
+  height: 100vh;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+
+  #input-group {
+    margin-top: 22px;
+    margin-bottom: 19px;
+  }
+
+  #input-group p {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #495057;
+  }
+
+  #diagnoseTitle {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    color: #343a40;
+  }
+}
+
+#diagnose-header {
+  flex: 0 1 auto;
+}
+
+#diagnose-body {
+  // height: 100%;
+  flex: 1 1 auto;
+  overflow: hidden;
+  // padding-bottom: $diagnosebar-header-height;
+
+  .hover-menu {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover {
+      white-space: unset;
+      overflow: hidden;
+      text-overflow: unset;
+    }
+  }
+
+  p#body {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 16px;
+    padding-top: 7px;
+  }
+
+  span#date {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 16px;
+    color: #343a40;
+    padding-right: 7px;
+    padding-left: 2px;
+  }
+
+  #bottom i {
+    margin-left: 16px;
+  }
+
+  #title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 18px;
+    margin-right: 10px;
+
+    color: #343a40;
+  }
+
+  i {
+    text-align: justify;
+  }
+
+
+  p#header {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 17px;
+    color: #b0bec5;
+  }
+
+  #company-report {
+    i {
+      text-align: justify;
+    }
+
+    p {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 14px;
+      cursor: pointer;
+      color: #2a3042;
+    }
+
+
+  }
+}
+
+
+.submenu-active #spanButton {
+  left: $submenu-width;
+  transform: rotate(180deg) translateX(50%);
+}
+
+#spanButton {
+  z-index: 9999;
+  position: absolute;
+  top: 21px;
+  left: 0;
+  cursor: pointer;
+  transform: translateX(-50%) rotate(0);
+  color: #1F304A;
+  background-color: $white;
+  border-radius: 50%;
+  font-size: 20px;
+
+  &:hover {
+    top: 19px;
+    font-size: 25px;
+  }
+
+  &:active {
+    top: 20px;
+    font-size: 22px;
+  }
+}

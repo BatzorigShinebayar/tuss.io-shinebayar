@@ -1,0 +1,1 @@
+.add-task-department {  border: 1px solid $gray-600;  padding: 10px 15px;  border-radius: 4px;  margin-right: 5px;  margin-bottom: 5px;  cursor: pointer;  &.active, &:hover {    background-color: $deep-blue;    border-color: $deep-blue;    color: $white;  }}

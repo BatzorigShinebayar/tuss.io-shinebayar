@@ -1,0 +1,151 @@
+<template>
+  <b-row id="search-body" class="w-100">
+    <b-col class="overflow-auto h-100" cols="12">
+      <b-row class="m-3">
+        <p id="header">
+          <i class="bx bx-menu align-middle mr-1" />TASK CONFIGURATION
+        </p>
+      </b-row>
+      <b-row
+        v-for="(item, index) in taskConfiguration"
+        :key="index"
+        class="d-block p-1 ml-1 mt-1 border-bottom"
+      >
+        <b-col class="w-100" cols="12">
+          <a
+            :href="
+              $router.resolve({
+                name: 'task-configurations-detail',
+                params: { id: item.id },
+              }).href
+            "
+          >
+            <p class="textBold p-0" style="font-size: 13px; line-height: 14px">
+              {{ item.name }}
+            </p></a
+          >
+          <div class="d-flex my-2">
+            <img
+              v-if="item.img"
+              :src="item.img"
+              class="avatar-xs ml-1 mr-2"
+              style="border-radius: 25px"
+              width="25"
+              height="25"
+              alt
+            />
+            <img
+              v-else
+              src="/img/human_icon.b97ad0c7.png"
+              class="avatar-xs ml-1 mr-2"
+              style="border-radius: 25px"
+              width="25"
+              height="25"
+              alt
+            />
+            <div
+              id="employee_info"
+              class="flex-space-between w-100 cursor-pointer"
+              @mouseover="item_id = index"
+              @mouseleave="item_id = null"
+            >
+              <div class="align-self-center w-100">
+                <p class="text-muted text">
+                  {{ item.employee | get_employee_info }}
+                </p>
+              </div>
+              <div v-if="item_id === index" class="align-self-center">
+                <i class="bx bx-dots-vertical-rounded"></i>
+              </div>
+            </div>
+          </div>
+          <h5 class="d-block mb-2">
+            <b-badge v-if="item.state === 'confirm'" variant="success">
+              {{ item.state }}
+            </b-badge>
+            <b-badge v-else-if="item.state === 'sent'" variant="warning">
+              {{ item.state }}
+            </b-badge>
+            <b-badge v-else variant="danger">
+              {{ item.state }}
+            </b-badge>
+          </h5>
+        </b-col>
+      </b-row>
+      <div class="d-flex justify-content-center my-3">
+        <b-pagination
+          v-if="coordinateCount > 0"
+          v-model="page"
+          pills
+          :total-rows="coordinateCount"
+          :per-page="10"
+          size="sm"
+          @change="taskPagination"
+        ></b-pagination>
+      </div>
+    </b-col>
+  </b-row>
+</template>
+
+<script>
+export default {
+  name: 'GoalIndexesSearchBar',
+  data() {
+    return {
+      weekId: this.$route.params.weekId,
+      icon: '',
+      item_id: null,
+      page: 1,
+      taskConfiguration: [],
+      coordinateCount: 0,
+      employees: null,
+      organization: null,
+    };
+  },
+  mounted() {
+    this.tableLoad(1);
+  },
+  methods: {
+    tableLoad(page) {
+      this.taskConfiguration = [];
+      const activeCompany = this.$store.getters.activeCompany;
+      const urlData =
+        activeCompany +
+        '/' +
+        `?active=1&page=${page}&ordering=-created_date&page_size=10`;
+      this.getTaskCoordination(urlData);
+    },
+    taskPagination(page) {
+      this.coordinatePage = page;
+      this.tableLoad(page);
+    },
+    async getTaskCoordination(params) {
+      const response = await this.$store.dispatch(
+        'getTaskCoordination',
+        params
+      );
+      if (response.status === 200) {
+        this.taskConfiguration = response.data.results;
+        const employees = this.$store.getters.company.employees;
+        for (const j in employees) {
+          for (const i in this.taskConfiguration) {
+            if (
+              employees[j].partner__id === this.taskConfiguration[i].employee
+            ) {
+              this.taskConfiguration[i].img = employees[j].partner__picture;
+            }
+          }
+        }
+        this.coordinateCount = response.data.total;
+        this.coordinatePage = response.data.page;
+      }
+    },
+  },
+};
+</script>
+<style scoped>
+.text {
+  font-size: 13px;
+  line-height: 14px;
+}
+</style>
